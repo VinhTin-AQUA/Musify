@@ -1,0 +1,19 @@
+<div>
+    <div>
+        <span class="text-white text-[3rem] font-bold">All songs</span>
+    </div>
+
+    <div class="w-full bg-white h-[1px] mb-3"></div>
+
+    <div class="grid grid-cols-3 gap-2">
+        @for (item of list(); track $index) {
+        <app-song-item
+            [routerLink]="'/player'"
+            [nameOfSong]="item.nameOfSong"
+            [singer]="item.singer"
+            [duration]="'12:12'"
+            [thumbnail]="item.thumbnail"
+        ></app-song-item>
+        }
+    </div>
+</div>
