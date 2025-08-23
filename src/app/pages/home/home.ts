@@ -1,50 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { SongItem } from './components/song-item/song-item';
-import { SongModel } from './models/song.model';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { SongsStore } from '../../stores/list-songs.store';
+import { SongCardItem } from './components/song-card-item/song-card-item';
 
 @Component({
     selector: 'app-home',
-    imports: [SongItem, RouterLink],
+    imports: [SongItem, RouterLink, CommonModule, SongCardItem],
     templateUrl: './home.html',
     styleUrl: './home.scss',
 })
 export class Home {
-    list = signal<SongModel[]>([
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-    ]);
+    list = inject(SongsStore);
+    isShowList = signal<boolean>(false);
+
+    toggleShowList(flag: boolean) {
+        this.isShowList.set(flag);
+    }
 }

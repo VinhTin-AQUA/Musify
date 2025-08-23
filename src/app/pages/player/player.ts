@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { SongModel } from '../home/models/song.model';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SongsStore } from '../../stores/list-songs.store';
 
 @Component({
     selector: 'app-player',
@@ -9,45 +9,8 @@ import { CommonModule } from '@angular/common';
     styleUrl: './player.scss',
 })
 export class Player {
-    list = signal<SongModel[]>([
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-    ]);
-
-    currentSong: SongModel = this.list()[0];
+    list = inject(SongsStore);
+    currentSong: SongType = this.list.songs()[0];
     audio = new Audio();
 
     currentTime = signal<number>(0);
@@ -72,7 +35,7 @@ export class Player {
         }
     }
 
-    selectSong(song: SongModel) {
+    selectSong(song: SongType) {
         this.audio.pause();
         this.isPlaying = false;
         this.currentSong = song;

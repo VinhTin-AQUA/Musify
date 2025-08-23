@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-// @use 'tailwindcss';
-@import "tailwindcss";
+@use "tailwindcss";
+// @import "tailwindcss";
 
 html,
 body {
@@ -14,8 +14,18 @@ body {
     box-sizing: border-box;
     overflow-x: hidden;
 
-    font-family: "Roboto Slab", serif;
+    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 500;
     font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 2px;
 }
