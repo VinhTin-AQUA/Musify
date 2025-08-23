@@ -13,9 +13,9 @@ export class SongItem {
     @Input() thumbnail: string = '';
 
     // Phát sự kiện ra ngoài
-    @Output() onClick = new EventEmitter<void>();
+    @Output() playMusic = new EventEmitter<void>();
 
     handleClick() {
-        this.onClick.emit(); // gọi sự kiện cho parent
+        this.playMusic.emit(); // gọi sự kiện cho parent
     }
 }

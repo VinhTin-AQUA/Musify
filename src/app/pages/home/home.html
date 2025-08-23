@@ -47,11 +47,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             @for (item of list.songs(); track $index) {
             <app-song-item
-                [routerLink]="'/player'"
                 [nameOfSong]="item.nameOfSong"
                 [singer]="item.singer"
                 [duration]="'12:12'"
                 [thumbnail]="item.thumbnail"
+                (playMusic)="playSong(item)"
             ></app-song-item>
             }
         </div>
@@ -63,11 +63,11 @@
         >
             @for (item of list.songs(); track $index) {
             <app-song-card-item
-                [routerLink]="'/player'"
                 [nameOfSong]="item.nameOfSong"
                 [singer]="item.singer"
                 [duration]="'12:12'"
                 [thumbnail]="item.thumbnail"
+                (playMusic)="playSong(item)"
             ></app-song-card-item>
             }
         </div>
