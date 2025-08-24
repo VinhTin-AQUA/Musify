@@ -1,5 +1,10 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 
+type playbackRate = {
+    listRate: number[];
+    currentRate: number;
+};
+
 type MusicPlayerState = {
     song: SongType;
     isVisible: boolean;
@@ -8,6 +13,7 @@ type MusicPlayerState = {
     currentTime: number;
     duration: number;
     volume: number;
+    playbackRate: playbackRate;
 };
 
 const initialState: MusicPlayerState = {
@@ -23,6 +29,10 @@ const initialState: MusicPlayerState = {
     currentTime: 0,
     duration: 0,
     volume: 1,
+    playbackRate: {
+        currentRate: 1,
+        listRate: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
+    },
 };
 
 export const MusicPlayerStore = signalStore(
@@ -33,11 +43,15 @@ export const MusicPlayerStore = signalStore(
     withMethods((store) => ({
         playSong(song: SongType): void {
             const audio = store.audio();
+            const playbackRate = store.playbackRate();
 
             // set bài hát mới
             audio.src = song.url;
             audio.load();
             audio.play();
+
+            audio.playbackRate = playbackRate.currentRate;
+            playbackRate.currentRate = playbackRate.currentRate;
 
             // gắn sự kiện
             audio.ontimeupdate = () => {
@@ -83,10 +97,11 @@ export const MusicPlayerStore = signalStore(
                 volume: vol,
             }));
         },
-        updatePlaybackRate(playbackRate: number) {
+        updatePlaybackRate(newPlaybackRate: number) {
             // 0.25 -> 2
-            const { audio } = store;
-            audio().playbackRate = playbackRate;
+            const { audio, playbackRate } = store;
+            audio().playbackRate = newPlaybackRate;
+            playbackRate().currentRate = newPlaybackRate;
 
             patchState(store, (currentState) => ({
                 audio: audio(),

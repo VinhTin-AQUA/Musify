@@ -76,14 +76,17 @@
                         >
                             <path d="M3 9v6h4l5 5V4L7 9H3z" />
                         </svg>
-                        {{ (musicPlayer.volume() * 100).toFixed(0) | number:'3.0-0' }}%
+                        {{
+                            (musicPlayer.volume() * 100).toFixed(0)
+                                | number : "3.0-0"
+                        }}%
                     </button>
 
                     <!-- Thanh chỉnh volume -->
                     @if(showVolumeControl) {
                     <div
                         class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 p-2 rounded-lg shadow-lg"
-                        (appClickOutside)="showVolumeControl = false;"
+                        (appClickOutside)="showVolumeControl = false"
                     >
                         <input
                             type="range"
@@ -182,9 +185,51 @@
                 </div>
 
                 <!-- Speed -->
-                <button class="text-xs text-gray-300 hover:text-white">
-                    1.0x
-                </button>
+                <div class="relative inline-block">
+                    <!-- Nút volume -->
+                    <button
+                        (click)="togglePlayBackRate()"
+                        class="text-xs text-gray-300 hover:text-white"
+                    >
+                        {{
+                            musicPlayer.playbackRate().currentRate
+                                | number : "1.2-2"
+                        }}x
+                    </button>
+
+                    <!-- Thanh chỉnh showPlayBackRate -->
+                    @if(showPlayBackRate) {
+                    <div
+                        class="absolute bottom-full mb-2 right-0 bg-slate-900/90 shadow-xl z-50 rounded-2xl border"
+                        (appClickOutside)="showPlayBackRate = false"
+                    >
+                        <div class="w-30 p-4">
+                            <div class="grid grid-cols-1 gap-2 text-sm">
+                                @for (rate of
+                                musicPlayer.playbackRate().listRate; track
+                                $index) {
+                                <button
+                                    class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-slate-900 duration-75"
+                                    [class.bg-slate-200]="
+                                        musicPlayer.playbackRate()
+                                            .currentRate === rate
+                                    "
+                                    [class.text-slate-900]="
+                                        musicPlayer.playbackRate()
+                                            .currentRate === rate
+                                    "
+                                    (click)="
+                                        musicPlayer.updatePlaybackRate(rate)
+                                    "
+                                >
+                                    {{ rate | number : "1.2-2" }}x
+                                </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
         </div>
 
@@ -290,7 +335,51 @@
                 </button>
 
                 <!-- Speed -->
-                <button class="text-gray-300 hover:text-white">1.0x</button>
+                <div class="relative inline-block">
+                    <!-- Nút volume -->
+                    <button
+                        (click)="togglePlayBackRate()"
+                        class="text-gray-300 hover:text-white"
+                    >
+                        {{
+                            musicPlayer.playbackRate().currentRate
+                                | number : "1.2-2"
+                        }}x
+                    </button>
+
+                    <!-- Thanh chỉnh showPlayBackRate -->
+                    @if(showPlayBackRate) {
+                    <div
+                        class="absolute bottom-full mb-2 right-0 bg-slate-900/90 shadow-xl z-50 rounded-2xl border"
+                        (appClickOutside)="showPlayBackRate = false"
+                    >
+                        <div class="w-30 p-4">
+                            <div class="grid grid-cols-1 gap-2 text-sm">
+                                @for (rate of
+                                musicPlayer.playbackRate().listRate; track
+                                $index) {
+                                <button
+                                    class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-slate-900 duration-75"
+                                    [class.bg-slate-200]="
+                                        musicPlayer.playbackRate()
+                                            .currentRate === rate
+                                    "
+                                    [class.text-slate-900]="
+                                        musicPlayer.playbackRate()
+                                            .currentRate === rate
+                                    "
+                                    (click)="
+                                        musicPlayer.updatePlaybackRate(rate)
+                                    "
+                                >
+                                    {{ rate | number : "1.2-2" }}x
+                                </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
 
                 <!-- repeat mode -->
                 <button class="text-gray-300 hover:text-white">

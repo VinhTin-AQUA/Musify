@@ -14,6 +14,7 @@ import { ClickOutside } from '../../../directives/click-outside';
 export class MusicPlayer {
     musicPlayer = inject(MusicPlayerStore);
     showVolumeControl = false;
+    showPlayBackRate = false;
 
     togglePlay() {
         this.musicPlayer.togglePlay();
@@ -44,5 +45,9 @@ export class MusicPlayer {
 
     toggleVolumeControl() {
         this.showVolumeControl = !this.showVolumeControl;
+    }
+
+    togglePlayBackRate() {
+        this.showPlayBackRate = !this.showPlayBackRate;
     }
 }
