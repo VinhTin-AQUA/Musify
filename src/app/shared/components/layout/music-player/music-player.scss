@@ -12,7 +12,7 @@
     -webkit-appearance: none;
     appearance: none;
     // background: rgb(255, 149, 0); // màu của thanh track
-    background: linear-gradient(90deg, #f19e9e, #06004d);
+    
     border-radius: 5px; // radius của thanh track
 }
 
@@ -20,6 +20,7 @@
 .volume::-webkit-slider-runnable-track {
     height: 8px; // chiều cao của thanh track
     border-radius: 5px; // radius của thanh track
+    background: linear-gradient(90deg, #f19e9e, #06004d);
 }
 
 // thumb cho WebKit nút tròn để kéo
