@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ListSongsStore } from '../../stores/list-songs.store';
 import { SongCardItem } from './components/song-card-item/song-card-item';
 import { MusicPlayerStore } from '../../stores/music-player.store';
+import { Icon } from '../../shared/components/icon/icon';
 
 @Component({
     selector: 'app-home',
-    imports: [SongItem, CommonModule, SongCardItem],
+    imports: [SongItem, CommonModule, SongCardItem, Icon],
     templateUrl: './home.html',
     styleUrl: './home.scss',
 })

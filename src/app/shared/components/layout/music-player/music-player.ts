@@ -5,10 +5,11 @@ import { patchState } from '@ngrx/signals';
 import { CommonModule } from '@angular/common';
 import { ClickOutside } from '../../../directives/click-outside';
 import { ListSongsStore } from '../../../../stores/list-songs.store';
+import { Icon } from "../../icon/icon";
 
 @Component({
     selector: 'app-music-player',
-    imports: [FormsModule, CommonModule, ClickOutside],
+    imports: [FormsModule, CommonModule, ClickOutside, Icon],
     templateUrl: './music-player.html',
     styleUrl: './music-player.scss',
 })

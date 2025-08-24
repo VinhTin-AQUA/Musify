@@ -9,7 +9,7 @@ type playbackRate = {
 
 type MusicPlayerState = {
     song: SongType;
-    songIndex: number;
+    currentSongIndex: number;
     isVisible: boolean;
     isPlaying: boolean;
     audio: HTMLAudioElement;
@@ -27,13 +27,13 @@ const initialState: MusicPlayerState = {
         url: '',
         duration: 0,
     },
-    songIndex: -1,
+    currentSongIndex: -1,
     isVisible: false,
     isPlaying: false,
     audio: new Audio(),
     currentTime: 0,
     duration: 0,
-    volume: 1,
+    volume: 0.5,
     playbackRate: {
         currentRate: 1,
         listRate: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
@@ -49,7 +49,7 @@ export const MusicPlayerStore = signalStore(
         // inject other store
         const playlistStore = inject(ListSongsStore);
 
-        function playSong(song: SongType, songIndex: number): void {
+        function playSong(song: SongType, newSongIndex: number): void {
             const audio = store.audio();
             const playbackRate = store.playbackRate();
 
@@ -82,12 +82,12 @@ export const MusicPlayerStore = signalStore(
                 isVisible: true,
                 currentTime: 0,
                 duration: audio.duration || 0,
-                songIndex: songIndex,
+                currentSongIndex: newSongIndex,
             });
         }
 
         function prevSong() {
-            const songCurrentIndex = store.songIndex();
+            const songCurrentIndex = store.currentSongIndex();
             const totalSongs = playlistStore.songs().length;
 
             if (totalSongs <= 0) {
@@ -106,7 +106,7 @@ export const MusicPlayerStore = signalStore(
         }
 
         function nextSong() {
-            const songCurrentIndex = store.songIndex();
+            const songCurrentIndex = store.currentSongIndex();
             const totalSongs = playlistStore.songs().length;
 
             if (totalSongs <= 0) {
@@ -125,7 +125,17 @@ export const MusicPlayerStore = signalStore(
         }
 
         function togglePlay(): void {
-            const { isPlaying, audio } = store;
+            const { isPlaying, audio, currentSongIndex } = store;
+            let _currentSongIndex = currentSongIndex();
+
+            if (_currentSongIndex === -1) {
+                _currentSongIndex = Math.floor(Math.random() * playlistStore.songs().length);
+                playSong(
+                    playlistStore.songs()[_currentSongIndex],
+                    _currentSongIndex
+                );
+                return;
+            }
 
             if (isPlaying()) {
                 audio().pause();
@@ -135,6 +145,7 @@ export const MusicPlayerStore = signalStore(
 
             patchState(store, (currentState) => ({
                 isPlaying: !isPlaying(),
+                currentSongIndex: _currentSongIndex,
             }));
         }
 
