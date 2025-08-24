@@ -45,6 +45,7 @@
                 [duration]="item.duration"
                 [thumbnail]="item.thumbnail"
                 (playMusic)="playSong(item, $index)"
+                [active]="musicPlayer.currentSongIndex() === $index"
             ></app-song-item>
             }
         </div>
@@ -61,6 +62,7 @@
                 [duration]="item.duration"
                 [thumbnail]="item.thumbnail"
                 (playMusic)="playSong(item, $index)"
+                [active]="musicPlayer.currentSongIndex() === $index"
             ></app-song-card-item>
             }
         </div>
@@ -69,6 +71,6 @@
 </div>
 
 <app-download-music
-  [isOpen]="openDownloadModal"
-  (close)="openDownloadModal = false"
+    [isOpen]="openDownloadModal"
+    (close)="openDownloadModal = false"
 ></app-download-music>

@@ -1,7 +1,12 @@
-<article (click)="handleClick()"
-    class="group relative w-full rounded-2xl p-5 shadow-sm transition border border-slate-700/60 bg-slate-900/40 hover:bg-slate-300/40 hover:shadow-lg cursor-pointer"
+<article
+    (click)="handleClick()"
+    class="group relative w-full rounded-2xl p-5 transition border border-slate-700/60 hover:bg-slate-300/40 hover:shadow-lg cursor-pointer"
     role="figure"
     aria-label="Song card"
+    [ngClass]="{
+        'bg-slate-300/40': active === true,
+        ' bg-slate-900/40': active === false
+    }"
 >
     <!-- Cover -->
     <div class="flex items-center justify-center">

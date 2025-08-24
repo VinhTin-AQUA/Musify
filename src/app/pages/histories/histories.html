@@ -1,0 +1,53 @@
+<div
+    class="max-w-md mx-auto bg-slate-900/40 shadow rounded-lg divide-y divide-gray-200"
+>
+    @for (item of items; track $index) {
+    <div class="flex items-center justify-between p-4">
+        <div class="flex items-center space-x-3 w-full">
+            <div>
+                <app-icon name="youtube" class="w-10 block flex-shrink-0"></app-icon>
+            </div>
+
+            <span class="text-gray-200 font-medium truncate block flex-1">
+                {{ item.title }} 
+            </span>
+        </div>
+
+        <!-- Nút menu -->
+        <div class="relative">
+            <button
+                (click)="toggleMenu(item.id)"
+                class="p-2 rounded-full text-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:outline-none"
+            >
+                <!-- Icon 3 chấm -->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 "
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <circle cx="12" cy="6" r="1.5" />
+                    <circle cx="12" cy="12" r="1.5" />
+                    <circle cx="12" cy="18" r="1.5" />
+                </svg>
+            </button>
+
+            <!-- Context menu -->
+            @if (openMenuId === item.id) {
+            <div
+                class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-10 overflow-hidden"
+                (appClickOutside)="openMenuId = null;"
+            >
+                <button
+                    (click)="onAction('delete', item.id)"
+                    class="w-full text-left px-4 py-2 text-sm hover:bg-gray-200"
+                >
+                    Delete
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+    }
+</div>

@@ -1,1 +1,16 @@
 https://y2mate.nu/Qe7o/
+
+// du lieu khi load music
+fileName
+thumbnail
+nameOfSong
+singer
+album artist
+Lyrics
+duration
+url
+
+// histories
+link
+
+
