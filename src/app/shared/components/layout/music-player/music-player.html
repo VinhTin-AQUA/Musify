@@ -38,7 +38,7 @@
                     [max]="musicPlayer.duration()"
                     [ngModel]="musicPlayer.currentTime()"
                     (ngModelChange)="seekTo($event)"
-                    class="w-full h-1.5 rounded-lg appearance-none bg-gray-300 cursor-pointer accent-white"
+                    class="progress w-full rounded-lg bg-red-300 cursor-pointer"
                 />
                 <span class="text-xs w-10">
                     {{ formatTime(musicPlayer.duration()) }}
@@ -74,7 +74,7 @@
                     <!-- Thanh chỉnh volume -->
                     @if(showVolumeControl) {
                     <div
-                        class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 p-2 rounded-lg shadow-lg"
+                        class="absolute mb-2 appearance-none -translate-x-6 bottom-26 bg-slate-200 p-2 rounded-lg shadow-lg volume-wrapper"
                         (appClickOutside)="showVolumeControl = false"
                     >
                         <input
@@ -84,7 +84,7 @@
                             step="0.01"
                             [(ngModel)]="musicPlayer.volume"
                             (input)="setVolume(musicPlayer.volume())"
-                            class="w-1 h-24 rounded-lg appearance-none bg-gray-300 cursor-pointer accent-white mobile-input-range"
+                            class="volume"
                         />
                     </div>
                     }
@@ -285,7 +285,7 @@
                     [max]="musicPlayer.duration()"
                     [ngModel]="musicPlayer.currentTime()"
                     (ngModelChange)="seekTo($event)"
-                    class="w-full h-2 rounded-lg appearance-none bg-gray-300 cursor-pointer accent-white"
+                    class="progress w-full h-2 rounded-lg bg-gray-300 cursor-pointer"
                 />
                 <span>{{ formatTime(musicPlayer.duration()) }}</span>
             </div>
@@ -299,7 +299,7 @@
                     step="0.01"
                     [(ngModel)]="musicPlayer.volume"
                     (input)="setVolume(musicPlayer.volume())"
-                    class="w-full h-2 rounded-lg appearance-none bg-gray-300 cursor-pointer accent-white"
+                    class="volume volume-desktop w-full h-2 rounded-lg cursor-pointer "
                 />
                 <span
                     class="text-sm text-gray-200 font-medium min-w-[2.5rem] text-right"

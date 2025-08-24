@@ -1,5 +1,83 @@
-.mobile-input-range {
-    writing-mode: vertical-lr;
-    direction: rtl;
-    vertical-align: middle;
+.volume-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-90deg);
+}
+
+/* input range volume */
+
+// input phải bỏ style mặc định
+.volume {
+    -webkit-appearance: none;
+    appearance: none;
+    // background: rgb(255, 149, 0); // màu của thanh track
+    background: linear-gradient(90deg, #f19e9e, #06004d);
+    border-radius: 5px; // radius của thanh track
+}
+
+// track cho WebKit
+.volume::-webkit-slider-runnable-track {
+    height: 8px; // chiều cao của thanh track
+    border-radius: 5px; // radius của thanh track
+}
+
+// thumb cho WebKit nút tròn để kéo
+.volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #020617;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px; /* căn giữa */ // margin-top = (track_height - thumb_height) / 2
+
+    /* (tuỳ chọn) viền để thumb trắng nhìn rõ hơn */
+    // border: 2px solid #4caf50;
+}
+
+.volume-desktop::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px; /* căn giữa */
+
+    /* (tuỳ chọn) viền để thumb trắng nhìn rõ hơn */
+    // border: 2px solid #4caf50;
+}
+
+/* music progress */
+
+.progress {
+     -webkit-appearance: none;
+    appearance: none;
+    // background: rgb(255, 149, 0); // màu của thanh track
+    background: linear-gradient(90deg, #f1b65e, #f40000);
+    border-radius: 5px; // radius của thanh track
+}
+
+// track cho WebKit
+.progress::-webkit-slider-runnable-track {
+    height: 8px; // chiều cao của thanh track
+    border-radius: 5px; // radius của thanh track
+}
+
+// thumb cho WebKit nút tròn để kéo
+.progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px; /* căn giữa */ // margin-top = (track_height - thumb_height) / 2
+
+    /* (tuỳ chọn) viền để thumb trắng nhìn rõ hơn */
+    // border: 2px solid #4caf50;
 }
