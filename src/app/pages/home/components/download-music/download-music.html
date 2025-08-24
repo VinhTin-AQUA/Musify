@@ -1,0 +1,70 @@
+@if(isOpen) {
+<div
+    class="fixed inset-0 flex items-center justify-center bg-opacity-50"
+>
+    <div class="bg-slate-900 rounded-2xl shadow-lg w-full max-w-md p-6">
+        <h2 class="text-xl font-semibold mb-4 text-white">Download File</h2>
+
+        <!-- Input -->
+        <label class="block mb-2 text-sm font-medium text-gray-700 text-white">Tên</label>
+        <input
+            type="text"
+            [(ngModel)]="name"
+            placeholder="Nhập tên..."
+            class="w-full rounded-lg border px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+        />
+
+        <!-- Image preview -->
+        <img
+            src="https://i.ytimg.com/an_webp/jcQ_7qFPB2I/mqdefault_6s.webp?du=3000&sqp=CJ6Aq8UG&rs=AOn4CLBhoMvRHeG4kFaFSO2X6pvWm7sv_A"
+            alt="Preview"
+            class="rounded-lg mb-4"
+        />
+
+        <!-- Actions -->
+        <div class="flex justify-end space-x-3">
+            <button
+                (click)="onCancel()"
+                class="px-4 py-2 rounded-xl border border-gray-300 text-gray-700 text-white hover:bg-gray-100 hover:text-slate-900"
+                [disabled]="loading"
+            >
+                Cancel
+            </button>
+
+            <button
+                (click)="onDownload()"
+                class="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 flex items-center justify-center"
+                [disabled]="loading"
+            >
+                @if(!loading) {
+                <ng-container>Download</ng-container>
+                } @else {
+                <ng-container>
+                    <svg
+                        class="animate-spin h-5 w-5 mr-2 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4"
+                        ></circle>
+                        <path
+                            class="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        ></path>
+                    </svg>
+                    Loading...
+                </ng-container>
+                }
+            </button>
+        </div>
+    </div>
+</div>
+}
