@@ -49,9 +49,9 @@
             <app-song-item
                 [nameOfSong]="item.nameOfSong"
                 [singer]="item.singer"
-                [duration]="'12:12'"
+                [duration]="item.duration"
                 [thumbnail]="item.thumbnail"
-                (playMusic)="playSong(item)"
+                (playMusic)="playSong(item, $index)"
             ></app-song-item>
             }
         </div>
@@ -65,9 +65,9 @@
             <app-song-card-item
                 [nameOfSong]="item.nameOfSong"
                 [singer]="item.singer"
-                [duration]="'12:12'"
+                [duration]="item.duration"
                 [thumbnail]="item.thumbnail"
-                (playMusic)="playSong(item)"
+                (playMusic)="playSong(item, $index)"
             ></app-song-card-item>
             }
         </div>

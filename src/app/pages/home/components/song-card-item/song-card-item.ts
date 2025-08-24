@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SongCardItem {
     @Input() nameOfSong: string = '';
     @Input() singer: string = '';
-    @Input() duration: string = '';
+    @Input() duration: number = 0;
     @Input() thumbnail: string = '';
 
         // Phát sự kiện ra ngoài

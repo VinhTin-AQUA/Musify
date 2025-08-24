@@ -4,6 +4,7 @@ import { MusicPlayerStore } from '../../../../stores/music-player.store';
 import { patchState } from '@ngrx/signals';
 import { CommonModule } from '@angular/common';
 import { ClickOutside } from '../../../directives/click-outside';
+import { ListSongsStore } from '../../../../stores/list-songs.store';
 
 @Component({
     selector: 'app-music-player',
@@ -13,6 +14,7 @@ import { ClickOutside } from '../../../directives/click-outside';
 })
 export class MusicPlayer {
     musicPlayer = inject(MusicPlayerStore);
+    listSongs = inject(ListSongsStore);
     showVolumeControl = false;
     showPlayBackRate = false;
 
@@ -29,11 +31,11 @@ export class MusicPlayer {
     }
 
     prevSong() {
-        // TODO: xử lý sang bài trước
+        this.musicPlayer.prevSong();
     }
 
     nextSong() {
-        // TODO: xử lý sang bài tiếp theo
+        this.musicPlayer.nextSong();
     }
 
     formatTime(seconds: number) {

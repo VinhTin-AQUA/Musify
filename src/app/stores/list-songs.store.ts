@@ -7,219 +7,33 @@ type SongState = {
 const initialState: SongState = {
     songs: [
         {
-            nameOfSong: 'Shape Of You',
+            nameOfSong: 'Phố Đã Lên Đèn 1',
             singer: 'Kearan',
             thumbnail:
                 'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
             url: '/music/Phố Đã Lên Đèn.mp3',
+            duration: 0,
         },
         {
-            nameOfSong: 'Shape Of You',
+            nameOfSong: 'Phố Đã Lên Đèn 2',
             singer: 'Kearan',
             thumbnail:
                 'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
             url: '/music/Phố Đã Lên Đèn.mp3',
+            duration: 0,
         },
         {
-            nameOfSong: 'Shape Of You',
+            nameOfSong: 'Phố Đã Lên Đèn 3',
             singer: 'Kearan',
             thumbnail:
                 'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
             url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
-        },
-        {
-            nameOfSong: 'Shape Of You',
-            singer: 'Kearan',
-            thumbnail:
-                'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-            url: '/music/Phố Đã Lên Đèn.mp3',
+            duration: 0,
         },
     ],
 };
 
-export const SongsStore = signalStore(
+export const ListSongsStore = signalStore(
     {
         providedIn: 'root',
     },

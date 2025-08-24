@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SongsStore } from '../../stores/list-songs.store';
+import { ListSongsStore } from '../../stores/list-songs.store';
 
 @Component({
     selector: 'app-player',
@@ -9,7 +9,7 @@ import { SongsStore } from '../../stores/list-songs.store';
     styleUrl: './player.scss',
 })
 export class Player {
-    list = inject(SongsStore);
+    list = inject(ListSongsStore);
     currentSong: SongType = this.list.songs()[0];
     audio = new Audio();
 

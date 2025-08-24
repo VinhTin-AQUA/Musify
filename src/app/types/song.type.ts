@@ -3,4 +3,5 @@ type SongType = {
     singer: string;
     thumbnail: string;
     url: string;
+    duration: number
 };

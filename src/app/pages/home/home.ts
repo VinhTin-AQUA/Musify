@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { SongItem } from './components/song-item/song-item';
 import { CommonModule } from '@angular/common';
-import { SongsStore } from '../../stores/list-songs.store';
+import { ListSongsStore } from '../../stores/list-songs.store';
 import { SongCardItem } from './components/song-card-item/song-card-item';
 import { MusicPlayerStore } from '../../stores/music-player.store';
 
@@ -12,7 +12,7 @@ import { MusicPlayerStore } from '../../stores/music-player.store';
     styleUrl: './home.scss',
 })
 export class Home {
-    list = inject(SongsStore);
+    list = inject(ListSongsStore);
     isShowList = signal<boolean>(true);
     musicPlayer = inject(MusicPlayerStore);
 
@@ -20,7 +20,7 @@ export class Home {
         this.isShowList.set(flag);
     }
 
-    playSong(song: SongType) {
-        this.musicPlayer.playSong(song);
+    playSong(song: SongType, songIndex: number) {
+        this.musicPlayer.playSong(song, songIndex);
     }
 }

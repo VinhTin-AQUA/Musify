@@ -1,4 +1,6 @@
+import { inject } from '@angular/core';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { ListSongsStore } from './list-songs.store';
 
 type playbackRate = {
     listRate: number[];
@@ -7,6 +9,7 @@ type playbackRate = {
 
 type MusicPlayerState = {
     song: SongType;
+    songIndex: number;
     isVisible: boolean;
     isPlaying: boolean;
     audio: HTMLAudioElement;
@@ -22,7 +25,9 @@ const initialState: MusicPlayerState = {
         singer: 'No Artist',
         thumbnail: '/images/microphone.png',
         url: '',
+        duration: 0,
     },
+    songIndex: -1,
     isVisible: false,
     isPlaying: false,
     audio: new Audio(),
@@ -40,8 +45,11 @@ export const MusicPlayerStore = signalStore(
         providedIn: 'root',
     },
     withState(initialState),
-    withMethods((store) => ({
-        playSong(song: SongType): void {
+    withMethods((store) => {
+        // inject other store
+        const playlistStore = inject(ListSongsStore);
+
+        function playSong(song: SongType, songIndex: number): void {
             const audio = store.audio();
             const playbackRate = store.playbackRate();
 
@@ -62,6 +70,11 @@ export const MusicPlayerStore = signalStore(
                 patchState(store, { duration: audio.duration });
             };
 
+            // tự động chuyển bài kế tiếp
+            audio.onended = () => {
+                nextSong();
+            };
+
             // cập nhật state ban đầu
             patchState(store, {
                 song,
@@ -69,9 +82,49 @@ export const MusicPlayerStore = signalStore(
                 isVisible: true,
                 currentTime: 0,
                 duration: audio.duration || 0,
+                songIndex: songIndex,
             });
-        },
-        togglePlay(): void {
+        }
+
+        function prevSong() {
+            const songCurrentIndex = store.songIndex();
+            const totalSongs = playlistStore.songs().length;
+
+            if (totalSongs <= 0) {
+                return;
+            }
+
+            let newSongCurrentIndex = songCurrentIndex - 1;
+            if (newSongCurrentIndex < 0) {
+                newSongCurrentIndex = totalSongs - 1;
+            }
+
+            playSong(
+                playlistStore.songs()[newSongCurrentIndex],
+                newSongCurrentIndex
+            );
+        }
+
+        function nextSong() {
+            const songCurrentIndex = store.songIndex();
+            const totalSongs = playlistStore.songs().length;
+
+            if (totalSongs <= 0) {
+                return;
+            }
+
+            let newSongCurrentIndex = songCurrentIndex + 1;
+            if (newSongCurrentIndex >= totalSongs) {
+                newSongCurrentIndex = 0;
+            }
+
+            playSong(
+                playlistStore.songs()[newSongCurrentIndex],
+                newSongCurrentIndex
+            );
+        }
+
+        function togglePlay(): void {
             const { isPlaying, audio } = store;
 
             if (isPlaying()) {
@@ -83,21 +136,24 @@ export const MusicPlayerStore = signalStore(
             patchState(store, (currentState) => ({
                 isPlaying: !isPlaying(),
             }));
-        },
-        seekTo(time: number) {
+        }
+
+        function seekTo(time: number) {
             store.audio().currentTime = time;
             patchState(store, (currentState) => ({
                 currentTime: time,
             }));
-        },
-        setVolume(vol: number) {
+        }
+
+        function setVolume(vol: number) {
             store.audio().volume = vol;
 
             patchState(store, (currentState) => ({
                 volume: vol,
             }));
-        },
-        updatePlaybackRate(newPlaybackRate: number) {
+        }
+
+        function updatePlaybackRate(newPlaybackRate: number) {
             // 0.25 -> 2
             const { audio, playbackRate } = store;
             audio().playbackRate = newPlaybackRate;
@@ -106,6 +162,16 @@ export const MusicPlayerStore = signalStore(
             patchState(store, (currentState) => ({
                 audio: audio(),
             }));
-        },
-    }))
+        }
+
+        return {
+            playSong,
+            prevSong,
+            nextSong,
+            togglePlay,
+            seekTo,
+            setVolume,
+            updatePlaybackRate,
+        };
+    })
 );

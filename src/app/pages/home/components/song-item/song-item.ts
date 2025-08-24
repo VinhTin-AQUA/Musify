@@ -7,9 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrl: './song-item.scss',
 })
 export class SongItem {
-    @Input() nameOfSong: string = 'Shape of you';
-    @Input() singer: string = 'Kearan';
-    @Input() duration: string = 'Kearan';
+    @Input() nameOfSong: string = '';
+    @Input() singer: string = '';
+    @Input() duration: number = 0;
     @Input() thumbnail: string = '';
 
     // Phát sự kiện ra ngoài
