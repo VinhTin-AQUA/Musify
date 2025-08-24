@@ -12,17 +12,16 @@ type MusicPlayerState = {
 
 const initialState: MusicPlayerState = {
     song: {
-        nameOfSong: 'Phố Đã Lên Đèn',
-        singer: "I don't know",
-        thumbnail:
-            'https://i.ytimg.com/vi/qGRU3sRbaYw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBXP4axOpVxjQlix1paqJp9FRmX4w',
-        url: '/music/Phố Đã Lên Đèn.mp3',
+        nameOfSong: 'No Song',
+        singer: 'No Artist',
+        thumbnail: '/images/microphone.png',
+        url: '',
     },
     isVisible: false,
     isPlaying: false,
     audio: new Audio(),
     currentTime: 0,
-    duration: 282,
+    duration: 0,
     volume: 1,
 };
 
@@ -82,6 +81,15 @@ export const MusicPlayerStore = signalStore(
 
             patchState(store, (currentState) => ({
                 volume: vol,
+            }));
+        },
+        updatePlaybackRate(playbackRate: number) {
+            // 0.25 -> 2
+            const { audio } = store;
+            audio().playbackRate = playbackRate;
+
+            patchState(store, (currentState) => ({
+                audio: audio(),
             }));
         },
     }))

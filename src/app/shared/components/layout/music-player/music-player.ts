@@ -3,15 +3,17 @@ import { FormsModule } from '@angular/forms';
 import { MusicPlayerStore } from '../../../../stores/music-player.store';
 import { patchState } from '@ngrx/signals';
 import { CommonModule } from '@angular/common';
+import { ClickOutside } from '../../../directives/click-outside';
 
 @Component({
     selector: 'app-music-player',
-    imports: [FormsModule, CommonModule],
+    imports: [FormsModule, CommonModule, ClickOutside],
     templateUrl: './music-player.html',
     styleUrl: './music-player.scss',
 })
 export class MusicPlayer {
     musicPlayer = inject(MusicPlayerStore);
+    showVolumeControl = false;
 
     togglePlay() {
         this.musicPlayer.togglePlay();
@@ -38,5 +40,9 @@ export class MusicPlayer {
         const m = Math.floor(seconds / 60);
         const s = Math.floor(seconds % 60);
         return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    toggleVolumeControl() {
+        this.showVolumeControl = !this.showVolumeControl;
     }
 }
