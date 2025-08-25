@@ -17,6 +17,7 @@ type MusicPlayerState = {
     duration: number;
     volume: number;
     playbackRate: playbackRate;
+    repeatType: number; // 0: repeat all again, 1: repeat all once, 2: repeat one
 };
 
 const initialState: MusicPlayerState = {
@@ -38,6 +39,7 @@ const initialState: MusicPlayerState = {
         currentRate: 1,
         listRate: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
     },
+    repeatType: 0,
 };
 
 export const MusicPlayerStore = signalStore(
@@ -86,6 +88,10 @@ export const MusicPlayerStore = signalStore(
             });
         }
 
+        function prevSongWithoutRepeatType() {
+            
+        }
+
         function prevSong() {
             const songCurrentIndex = store.currentSongIndex();
             const totalSongs = playlistStore.songs().length;
@@ -105,19 +111,57 @@ export const MusicPlayerStore = signalStore(
             );
         }
 
-        function nextSong() {
+        function nextSongWithoutRepeatType() {
             const songCurrentIndex = store.currentSongIndex();
             const totalSongs = playlistStore.songs().length;
+            const repeatType = store.repeatType();
 
             if (totalSongs <= 0) {
                 return;
             }
 
-            let newSongCurrentIndex = songCurrentIndex + 1;
+            let newSongCurrentIndex = -1;
+
+            newSongCurrentIndex = songCurrentIndex + 1;
             if (newSongCurrentIndex >= totalSongs) {
                 newSongCurrentIndex = 0;
             }
 
+            playSong(
+                playlistStore.songs()[newSongCurrentIndex],
+                newSongCurrentIndex
+            );
+        }
+
+        function nextSong() {
+            const songCurrentIndex = store.currentSongIndex();
+            const totalSongs = playlistStore.songs().length;
+            const repeatType = store.repeatType();
+
+            if (totalSongs <= 0) {
+                return;
+            }
+
+            let newSongCurrentIndex = -1;
+
+            switch (repeatType) {
+                case 0:
+                    newSongCurrentIndex = songCurrentIndex + 1;
+                    if (newSongCurrentIndex >= totalSongs) {
+                        newSongCurrentIndex = 0;
+                    }
+                    break;
+                case 1:
+                    newSongCurrentIndex = songCurrentIndex + 1;
+                    if (newSongCurrentIndex >= totalSongs) {
+                        resetState();
+                        break;
+                    }
+                    break;
+                case 2:
+                    newSongCurrentIndex = songCurrentIndex;
+                    break;
+            }
             playSong(
                 playlistStore.songs()[newSongCurrentIndex],
                 newSongCurrentIndex
@@ -129,7 +173,9 @@ export const MusicPlayerStore = signalStore(
             let _currentSongIndex = currentSongIndex();
 
             if (_currentSongIndex === -1) {
-                _currentSongIndex = Math.floor(Math.random() * playlistStore.songs().length);
+                _currentSongIndex = Math.floor(
+                    Math.random() * playlistStore.songs().length
+                );
                 playSong(
                     playlistStore.songs()[_currentSongIndex],
                     _currentSongIndex
@@ -175,14 +221,34 @@ export const MusicPlayerStore = signalStore(
             }));
         }
 
+        function updateRepeatType() {
+            const repeatType = store.repeatType();
+            let newRepeatType = repeatType + 1;
+            if (newRepeatType > 2) {
+                newRepeatType = 0;
+            }
+
+            patchState(store, (currentState) => ({
+                repeatType: newRepeatType,
+            }));
+        }
+
+        function resetState() {
+            patchState(store, (currentState) => ({
+                isPlaying: false,
+            }));
+        }
+
         return {
             playSong,
             prevSong,
+            nextSongWithoutRepeatType,
             nextSong,
             togglePlay,
             seekTo,
             setVolume,
             updatePlaybackRate,
+            updateRepeatType,
         };
     })
 );

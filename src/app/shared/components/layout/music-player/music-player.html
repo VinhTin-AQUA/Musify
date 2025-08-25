@@ -45,8 +45,26 @@
                 </span>
 
                 <!-- repeat mode -->
-                <button class="text-gray-300 hover:text-white">
-                    <app-icon name="arrow-path-rounded-square"></app-icon>
+                <button
+                    (click)="musicPlayer.updateRepeatType()"
+                    class="text-gray-300 hover:text-white cursor-pointer"
+                >
+                    @switch (musicPlayer.repeatType()) { @case (0) {
+                    <app-icon
+                        name="arrow-path-rounded-square"
+                        title="Repeat all again"
+                    ></app-icon>
+                    } @case (1) {
+                    <app-icon
+                        name="arrow-right"
+                        title="Repeat all once"
+                    ></app-icon>
+                    } @case (2) {
+                    <app-icon
+                        name="arrows-repeat-count"
+                        title="Repeat one"
+                    ></app-icon>
+                    } }
                 </button>
             </div>
 
@@ -271,8 +289,26 @@
                 </div>
 
                 <!-- repeat mode -->
-                <button class="text-gray-300 hover:text-white">
-                    <app-icon name="arrow-path-rounded-square"></app-icon>
+                <button
+                    (click)="musicPlayer.updateRepeatType()"
+                    class="text-gray-300 hover:text-white cursor-pointer"
+                >
+                    @switch (musicPlayer.repeatType()) { @case (0) {
+                    <app-icon
+                        name="arrow-path-rounded-square"
+                        title="Repeat all again"
+                    ></app-icon>
+                    } @case (1) {
+                    <app-icon
+                        name="arrow-right"
+                        title="Repeat all once"
+                    ></app-icon>
+                    } @case (2) {
+                    <app-icon
+                        name="arrows-repeat-count"
+                        title="Repeat one"
+                    ></app-icon>
+                    } }
                 </button>
             </div>
 
@@ -299,7 +335,7 @@
                     step="0.01"
                     [(ngModel)]="musicPlayer.volume"
                     (input)="setVolume(musicPlayer.volume())"
-                    class="volume volume-desktop w-full h-2 rounded-lg cursor-pointer "
+                    class="volume volume-desktop w-full h-2 rounded-lg cursor-pointer"
                 />
                 <span
                     class="text-sm text-gray-200 font-medium min-w-[2.5rem] text-right"

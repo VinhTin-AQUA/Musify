@@ -36,7 +36,7 @@ export class MusicPlayer {
     }
 
     nextSong() {
-        this.musicPlayer.nextSong();
+        this.musicPlayer.nextSongWithoutRepeatType();
     }
 
     formatTime(seconds: number) {
